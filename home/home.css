@@ -1,0 +1,314 @@
+@import url(popular.css);
+@import url(categories.css);
+
+body {
+  font-family: "Inter", serif;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  margin: 5px 2px;
+  margin-top: 60px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #283044;
+  border-radius: 12px;
+  min-height: 40px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #506088;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+::-webkit-scrollbar-track-horizontal {
+  background: #FFFFFF;
+  margin: 2px 5px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb-horizontal {
+  background: #283044;
+  border-radius: 12px;
+  min-width: 40px;
+}
+
+::-webkit-scrollbar-thumb-horizontal:hover {
+  background: #506088;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text {
+  max-width: 50%;
+}
+
+body h1 {
+  font-weight: 500;
+  font-size: 60px;
+  text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  font-family: "Inter", Medium;
+  margin-left: 64px;
+  color: #283044;
+}
+
+body h3 {
+  text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  font-weight: 300;
+  font-size: 18px;
+  color: #283044;
+  font-family: "Inter", ExtraLight;
+  line-height: 1.6;
+  margin-left: 64px;
+}
+
+.home_button {
+  margin-top: 32px;
+  margin-left: 64px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  background-color: #283044;
+  color: #fff;
+  padding: 12px 0;
+  width: 40%;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 300;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  margin-bottom: 15px;
+  font-family: "Inter";
+}
+
+.home_button span:not(:nth-child(6)) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 30px;
+  width: 30px;
+  background-color: #656d82;
+  border-radius: 50%;
+  transition: .6s ease;
+
+}
+
+.home_button span:nth-child(6) {
+  position: relative;
+
+}
+
+.home_button span:nth-child(1) {
+  transform: translate(-3.3em, -4em);
+
+}
+
+.home_button span:nth-child(2) {
+  transform: translate(-6em, 1.3em);
+}
+
+.home_button span:nth-child(3) {
+  transform: translate(-.2em, 1.8em);
+}
+
+.home_button span:nth-child(4) {
+  transform: translate(3.5em, 1.4em);
+}
+
+.home_button span:nth-child(5) {
+  transform: translate(3.5em, -3.8em);
+}
+
+.home_button:hover span:not(:nth-child(6)) {
+  transform: translate(-50%, -50%) scale(9);
+  transition: 1.5s ease;
+}
+
+
+.img_home {
+  width: 45%;
+  height: auto;
+  margin-top: 22px;
+}
+
+/*Footer*/
+
+div.Footer {
+  margin-bottom: 0;
+  margin-top: auto;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 40px;
+  user-select: none;
+}
+
+.logo img {
+  width: 35px;
+  height: auto;
+}
+
+.footer {
+  background-color: #283044;
+  color: #fff;
+  padding: 50px 0;
+  font-family: "Inter", sans-serif;
+  margin-top: 48px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+footer .logo {
+  border-right: 1px solid #b3b8c4a8;
+  padding-right: 100px;
+  height: 100px;
+}
+
+footer .logo span {
+  font-family: "Inter", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #ffffff;
+  gap: 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #b3b8c4a8;
+  padding-right: 70px;
+  border-left: 1px solid #b3b8c4a8;
+  padding-left: 80px;
+  height: 100px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.footer-copyright {
+  font-size: 16px;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.footer-links-a a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.footer-right a {
+  color: #fff;
+  text-decoration: underline;
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.footer-links a:hover {
+  color: #B3B8C4;
+}
+
+.footer-right a:hover {
+  text-decoration: underline;
+  color: #B3B8C4;
+}
+
+.footer-address span {
+  display: block;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.footer-address i {
+  margin-right: 5px;
+}
+
+.footer-address a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Базова анімація fade-in */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Анімація для тексту */
+.text-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.text-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,237 @@
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #FFFFFF;
+    margin: 5px 2px;
+    margin-top: 60px;
+    border-radius: 2px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #283044;
+    border-radius: 12px;
+    min-height: 40px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #506088;
+  }
+  
+  ::-webkit-scrollbar:horizontal {
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track-horizontal {
+    background: #FFFFFF;
+    margin: 2px 5px;
+    border-radius: 2px;
+  }
+  
+  ::-webkit-scrollbar-thumb-horizontal {
+    background: #283044;
+    border-radius: 12px;
+    min-width: 40px;
+  }
+  
+  ::-webkit-scrollbar-thumb-horizontal:hover {
+    background: #506088;
+  }
+
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+    min-height: 100vh; 
+  }
+    
+ 
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #fff;
+}
+
+.contact-section {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 40px;
+}
+
+.illustration img {
+    max-width: 600px;
+    display: block;
+    margin-left: 0; 
+    transform: translateX(-10%);
+}
+
+
+.contact-info {
+    max-width: 700px;
+    height: auto;
+}
+
+.contact-info h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-line {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+  }
+  
+
+/* Email box */
+.email-box {
+    background-color: #fff;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    text-align: center;
+    width: 640px;
+    height: 170px;
+    margin-bottom: 20px;
+}
+
+.email-box p {
+  font-family: "Inter";
+    margin-bottom: 10px;
+    font-size: 20px;
+        line-height: 1.4;
+        padding: 20px;
+}
+
+.email-button {
+    display: inline-block;
+    background-color: #283044;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 400px;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.email-button:hover {
+    background-color: #101318;
+}
+
+.small-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 640px;
+    margin: 0 auto;
+}
+
+
+.small-box {
+    background-color: #fff;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 15px 20px;
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+   
+}
+
+.small-box p {
+    font-size: 24px;
+    font-weight:600;
+    margin-bottom: 10px;
+    font-family: "Inter", sans-serif;
+}
+
+.phone-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.phone-input {
+    flex: 1;
+    width: 200px;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: #333;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: "Inter", sans-serif;
+}
+
+.phone-input::placeholder {
+    color: #bbb;
+}
+
+.phone-input:focus {
+  border-color: #101318;;
+  box-shadow: 0 0 5px rgba(8, 10, 11, 0.5);
+}
+.email-input {
+  flex: 1;
+  width: 525px;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  color: #333;
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+  align-items: flex-start;
+}
+.email-input::placeholder {
+  color: #bbb;
+}
+
+.email-input:focus {
+    border-color: #101318;;
+    box-shadow: 0 0 5px rgba(8, 10, 11, 0.5);
+}
+
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #283044; 
+    color: #fff; 
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 12px; 
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #1A1D26;
+}
+
+.submit-button span {
+    display: inline-block;
+    transform: translateX(0);
+    transition: transform 0.2s ease;
+    transform: scale(1.1, 2.0);
+}
+
+/* Анімація стрілки на наведенні */
+.submit-button:hover span {
+    transform: translateX(3px);
+}
+

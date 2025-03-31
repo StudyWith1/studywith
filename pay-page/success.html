@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>StudyWith</title>
+    <link rel="stylesheet" href="/pay-page/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../images/menu-logo.ico">
+  </head>
+
+  <body>
+    <div id="header-container"></div>
+    <!-- Контейнер для динамічного хедера -->
+    <main>
+      <section class="success">
+        <h2 data-lang="successTitle">Processing your payment...</h2>
+        <p data-lang="successDescription" id="success-message">
+          Please wait while we process your enrollment.
+        </p>
+        <a href="/" class="to-home" data-lang="toHome" style="display: none;" id="home-link">To the home page</a>
+      </section>
+    </main>
+    <div id="footer-container"></div>
+    <!-- Контейнер для динамічного футера -->
+  </body>
+  <script src="../header/auth-header.js"></script>
+  <script src="../footer/footer.js"></script>
+  <script src="../pay-page/succes-lang.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+        const courseId = urlParams.get('courseId');
+        const userId = urlParams.get('userId');
+        
+        const titleElement = document.querySelector('[data-lang="successTitle"]');
+        const messageElement = document.getElementById('success-message');
+        const homeLink = document.getElementById('home-link');
+
+        if (sessionId && courseId && userId) {
+            try {
+                const response = await fetch(`/pay-page/verify-payment?session_id=${sessionId}&courseId=${courseId}&userId=${userId}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    titleElement.textContent = 'Payment was successful!';
+                    messageElement.textContent = 'Thank you for buying the course. Have a great learning time!';
+                    homeLink.style.display = 'inline-block';
+                    
+                    // Перенаправлення на профіль через 2 секунди
+                    setTimeout(() => {
+                        window.location.href = '/profile-student';
+                    }, 2000);
+                } else {
+                    titleElement.textContent = 'Error processing payment';
+                    messageElement.textContent = 'There was an error processing your enrollment. Please contact support.';
+                    homeLink.style.display = 'inline-block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                titleElement.textContent = 'Error processing payment';
+                messageElement.textContent = 'There was an error processing your enrollment. Please contact support.';
+                homeLink.style.display = 'inline-block';
+            }
+        }
+
+        // Застосовуємо переклад
+        const userLang = localStorage.getItem('language') || 'en';
+        applyLanguage(userLang);
+    });
+  </script>
+</html>

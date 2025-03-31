@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-lang="pageTitle">Study With</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../all_courses/all.css" />
+    <link rel="icon" href="../images/menu-logo.ico" />
+    <link rel="stylesheet" href="/scroll-to-top/scroll-to-top.css">
+    <link rel="stylesheet" href="/preloader/preloader.css">
+    <script src="/scroll-to-top/scroll-to-top.js"></script>
+  </head>
+  <body>
+    <div class="page">
+    <h1 class="h1-courses" data-lang="courseCatalog">Course catalog</h1>
+    <h2 class="h2-find" data-lang="find">Find everything you need</h2>
+    <div class="search-container">
+      <input
+        type="text"
+        class="Search"
+        data-lang="searchPlaceholder"
+        placeholder="Search courses..."
+      />
+      <button class="search-btnn" data-lang="search">Search</button>
+      <div class="search-suggestions"></div>
+    </div>
+    <div class="container">
+      <div class="left-container">
+        <div class="filters">
+          <h4 class="filters-clear" data-lang="clearFilters">Clear filters</h4>
+          <h4 class="filters-themes" data-lang="themes">Themes</h4>
+
+          <!-- Filter Options -->
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-1" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="programming">Programming</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-2" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="design">Design</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-3" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="marketing">Marketing</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-4" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="business">Business</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-5" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="languages">Languages</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-6" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="finance">Finance</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-7" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="personalDevelopment">Personal Development</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-8" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="art">Art</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-9" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="photography">Photography</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-10" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="psychology">Psychology</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-11" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="health">Health</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-12" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="cooking">Cooking</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-13" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="science">Science</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-14" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="gameDevelopment">Game Development</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="theme-option-15" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="childcare">Childcare</span>
+          </label>
+
+          <!-- Price Filter -->
+          <h4 class="filters-themes" data-lang="price">Price</h4>
+          <label class="checkbox">
+            <input type="checkbox" name="price-free" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="free">Free</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="price-paid" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="paid">Paid</span>
+          </label>
+
+          <!-- Educational Level Filter -->
+          <h4 class="filters-themes" data-lang="educationalLevel">
+            Educational level
+          </h4>
+          <label class="checkbox">
+            <input type="checkbox" name="level-none" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="noLevel">No level</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="level-basic" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="basicLevel">Basic level</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="level-intermediate" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="intermediateLevel">Intermediate level</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="level-advanced" class="checkbox-input" />
+            <span class="checkbox-label" data-lang="advancedLevel">Advanced level</span>
+          </label>
+
+          <h4 class="filters-apply" data-lang="applyFilters">Apply filters</h4>
+        </div>
+      </div>
+
+      <div class="right-container">
+        <div class="container-text">
+          <h2 class="Result" data-lang="results"></h2>
+          <div class="Sort">
+            <span data-lang="sort">Sort</span>
+            <select class="dropdown">
+              <option value="option0" data-lang="defaultSort">Default</option>
+              <option value="option1" data-lang="sortByPrice">
+                Sort By Price
+              </option>
+              <option value="option2" data-lang="sortByPopularity">
+                Sort By Popularity
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="courses"></div>
+        
+          <button class="more-btn" data-lang="loadMore">Load More</button>
+      
+      </div>
+     
+     
+    </div>
+
+    
+    <button id="scrollToTopBtn" class="scroll-to-top-btn">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+    <div id="pixel-cat">
+      <img src="/images/pixelcat.gif" alt="Pixel Cat" />
+    </div>
+    </div>
+    <script src="/preloader/preloader.js"></script>
+    <script>
+      const translations = {
+        en: {
+          pageTitle: "StudyWith | Course Catalog",
+          courseCatalog: "Course catalog",
+          find: "Find everything you need",
+          searchPlaceholder: "Search courses...",
+          search: "Search",
+          themes: "Themes",
+          programming: "Programming",
+          design: "Design",
+          marketing: "Marketing",
+          business: "Business",
+          languages: "Languages",
+          finance: "Finance",
+          personalDevelopment: "Personal Development",
+          art: "Art",
+          price: "Price",
+          free: "Free",
+          paid: "Paid",
+          educationalLevel: "Educational level",
+          noLevel: "No level",
+          basicLevel: "Basic level",
+          intermediateLevel: "Intermediate level",
+          advancedLevel: "Advanced level",
+          applyFilters: "Apply filters",
+          clearFilters: "Clear filters",
+          results: "Results",
+          sort: "Sort",
+          defaultSort: "Default",
+          sortByPrice: "Sort By Price",
+          sortByPopularity: "Sort By Popularity",
+          loadMore: "Load More",
+        },
+        ua: {
+          pageTitle: "StudyWith | Каталог курсів",
+          courseCatalog: "Каталог курсiв",
+          find: "Знайдiть все, що вам потрiбно",
+          searchPlaceholder: "Пошук курсiв...",
+          search: "Пошук",
+          themes: "Теми",
+          programming: "Програмування",
+          design: "Дизайн",
+          marketing: "Маркетинг",
+          business: "Бiзнес",
+          languages: "Мови",
+          finance: "Фiнанси",
+          personalDevelopment: "Особистiсний розвиток",
+          art: "Мистецтво",
+          price: "Цiна",
+          free: "Безкоштовно",
+          paid: "Платно",
+          educationalLevel: "Освiтнiй рiвень",
+          noLevel: "Без рiвня",
+          basicLevel: "Базовий рiвень",
+          intermediateLevel: "Середнiй рiвень",
+          advancedLevel: "Високий рiвень",
+          applyFilters: "Застосувати фiльтри",
+          clearFilters: "Очистити фiльтри",
+          results: "Результат",
+          sort: "Сортування",
+          defaultSort: "За замовчуванням",
+          sortByPrice: "Сортувати за цiною",
+          sortByPopularity: "Сортувати за популярнiстю",
+          loadMore: "Завантажити ще",
+        },
+      };
+
+      function applyLanguage(lang) {
+        const langData = translations[lang];
+
+        document.title = langData.pageTitle;
+
+        document.querySelectorAll("[data-lang]").forEach((element) => {
+          const langKey = element.getAttribute("data-lang");
+          if (langData[langKey]) {
+            if (element.tagName === "INPUT") {
+              element.setAttribute("placeholder", langData[langKey]);
+            } else if (element.tagName === "BUTTON") {
+              element.textContent = langData[langKey];
+            } else if (element.tagName === "H2") {
+              element.textContent = langData[langKey];
+            } else if (element.tagName === "P") {
+              element.textContent = langData[langKey];
+            } else {
+              element.innerHTML = langData[langKey];
+            }
+          }
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const userLang = localStorage.getItem("language");
+        applyLanguage(userLang);
+      });
+    </script>
+    <script src="easteregg.js"></script>
+    <script src="../header/auth-header.js"></script>
+    <script src="../footer/footer.js"></script>
+    <script src="../coursesData.js"></script>
+    <script src="../all_courses/all.js"></script>
+    <script src="../all_courses/search.js"></script>
+    <script src="../coursesData.js"></script>
+    <script src="/mobileview.js"></script>
+  </body>
+</html>

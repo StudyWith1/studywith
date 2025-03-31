@@ -1,0 +1,115 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  margin: 5px 2px;
+  margin-top: 60px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #283044;
+  border-radius: 12px;
+  min-height: 40px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #506088;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+::-webkit-scrollbar-track-horizontal {
+  background: #FFFFFF;
+  margin: 2px 5px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb-horizontal {
+  background: #283044;
+  border-radius: 12px;
+  min-width: 40px;
+}
+
+::-webkit-scrollbar-thumb-horizontal:hover {
+  background: #506088;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+  }
+
+  .fail-confirmation-page {
+    display: flex;
+    flex-direction: row; /* Горизонтальне розташування елементів */
+    align-items: center; /* Вирівнювання по вертикалі */
+    justify-content:space-around; /* Розподіл простору між елементами */
+    gap: 40px; /* Відступ між формою та картинкою */
+    padding: 10px;
+    max-width: 1200px; /* Максимальна ширина сторінки */
+    margin: 0 auto ; /* Центрування контейнера */
+  }
+  
+  
+  .illustration img {
+    max-width: 650px; /* Responsive image */
+  height: auto;  
+   
+  }
+  
+  .fail-conf-form{
+    background-color: #fff;
+    border-radius: 12px; /* Збільшуємо округлення */
+    padding: 30px 20px; /* Збільшуємо відступи */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.232); /* Сильніша тінь */
+    text-align: center;
+    max-width: 6000px; 
+    max-height: 200px;
+    margin: 0 auto; 
+    padding: 48px;
+  }
+  .description {
+    font-size: 20px; /* Робимо текст трохи більшим */
+    font-weight: 350; /* Збільшуємо товщину тексту */
+    margin-bottom: 25px; /* Збільшуємо відступ від заголовка до полів вводу */
+  }
+  .heading {
+    font-size: 26px; /* Робимо текст трохи більшим */
+    font-weight: 500; /* Збільшуємо товщину тексту */
+    margin-bottom: 25px; /* Збільшуємо відступ від заголовка до полів вводу */
+  }
+
+  .fail-button {
+    background-color: #283044; /* Темніша кнопка */
+    color: #fff;
+    border: none;
+    padding:  12px 0; 
+    width: 50%;
+    border-radius: 12px; 
+    cursor: pointer;
+    font-size: 16px; /* Збільшуємо текст кнопки */
+    font-weight: 300;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+    font-family: "Inter";
+  }
+  
+  .fail-button:hover {
+    background-color: #0c101a;
+  }
+  
+  .h2 {
+    font-family: "Inter";
+  }
+
+  .h3{
+    font-family: "Inter";
+  }

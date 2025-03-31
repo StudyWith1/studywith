@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-lang="testPage">Test Page</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="../images/menu-logo.ico">
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .generate-test {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0; 
+      padding: 20px 0; 
+    }
+
+    #final-test-block {
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    form {
+      width: 80%;
+      max-width: 800px;
+      margin: 0;  
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #F0F4F9;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; 
+      transform: translateY(0);
+    }
+    
+    label {
+      font-size: 16px;
+      font-weight: bold;
+      color: #283044;
+    }
+    
+    input, textarea {
+      margin-bottom: 15px;
+    }
+    /* Стилі для полів вводу */
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #283044;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      font-family: "Inter", sans-serif;
+    }
+    
+    input:focus, textarea:focus {
+      border-color: #283044; /* Колір рамки при фокусі */
+      outline: none; /* Прибирає стандартний outline */
+      transform: scale(1.02); /* Трошки збільшується розмір поля */
+    }
+    
+    input[type="text"]:not(:placeholder-shown), textarea:not(:placeholder-shown) {
+      background-color: #F0F4F9; /* Зміна фону після введення тексту */
+      font-family: "Inter", sans-serif;
+    }
+    
+    input::placeholder, textarea::placeholder {
+      color: #4e5871; /* Колір плейсхолдера */
+      opacity: 0.7;
+      font-family: "Inter", sans-serif;
+    }
+    
+    input[type="text"]:focus::placeholder, textarea:focus::placeholder {
+      opacity: 0.5;
+    }
+    /* Стиль для радіокнопок */
+    input[type="radio"] {
+      width: 20px; 
+      height: 20px; 
+      accent-color: #283044; 
+      cursor: pointer;
+      transform: scale(1); /* Базовий масштаб */
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      justify-content: center;
+    }
+
+    input[type="radio"]:hover {
+      transform: scale(1.2); 
+    }
+
+    input[type="radio"]:checked {
+      transform: scale(1.3); 
+    }
+    /* Основні стилі для кнопок */
+    button {
+      background-color: #283044; /* Фон кнопки */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+    
+    button:hover {
+      background-color: #141824; /* Колір при наведенні */
+      transform: scale(1.1); /* Збільшення кнопки */
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Тінь для кнопки */
+    }
+
+    button:active {
+      transform: scale(1.05); /* Зменшення при натисканні */
+    }
+    /* Стилі для кастомних чекбоксів */
+    input[type="checkbox"] {
+      appearance: none; /* Відключає стандартний вигляд */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #283044;
+      border-radius: 8px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    input[type="checkbox"]:checked {
+      background-color: #283044; /* Колір при виборі */
+      border-color: #141824;
+    }
+    
+    input[type="checkbox"]:checked::before {
+      content: '✔';
+      position: absolute;
+      top: -2px;
+      left: 4px;
+      color: white;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+    
+    input[type="checkbox"]:hover {
+      background-color: #c1d0de; /* Колір при наведенні */
+      border-color: #141824;
+    }
+    .final-question-block p{
+      font-size: 20px;
+      font-weight: 700;
+      text-shadow: 5px 5px 5px #00000091;
+    }
+    /* Контейнер для динамічних блоків */
+    #questions-block {
+      margin: 20px 0;
+      padding: 10px;
+      border: 2px dashed #283044;
+      border-radius: 12px;
+      background-color: #dcecfa;
+    }
+    /* Анімація для блоків питань */
+    .question-block {
+      opacity: 0;
+      padding: 15px;
+      margin: 10px 0;
+      transform: translateY(-20px); /* Спочатку питання зсуваються з верхнього боку */
+      border: 2px solid #283044;
+      border-radius: 12px;
+      font-family: "Inter", sans-serif;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      animation: slideIn 0.5s forwards;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .question-block p {
+      margin: 0 0 10px;
+    }
+    .answer-option {
+      margin: 5px 0;
+    }
+    /* Анімація для варіантів відповідей */
+    .answers-block {
+      opacity: 0;
+      transform: scale(0.95);
+      animation: fadeIn 0.3s forwards;
+      margin-top: 10px;
+      font-family: "Inter", sans-serif;
+    }
+    
+    /* Matching Question Styles */
+    .matching-container {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .matching-left-column, .matching-right-column {
+      width: 50%;
+    }
+    .matching-left-column div, .matching-right-column div {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1.5px dashed #283044;
+      border-radius: 12px;
+      background-color: #dcecfa;;
+    }
+    .matching-item {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background-color: #dcecfa;
+      cursor: grab;
+    }
+    .matching-item:active {
+      cursor: grabbing;
+      opacity: 0.5;
+    }
+
+    .matching-answer-block {
+      padding: 10px;
+      min-height: 40px;
+      margin-bottom: 10px;
+      border: 2px dashed #283044;
+      border-radius: 12px;
+      background-color: #f9f9f9;
+      pointer-events: auto;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .matching-answer-block.dragover {
+      border-color: #00bcd4;
+      background-color: #e0f7fa;
+    }
+
+    /* Open-ended Question Styles */
+    .open-ended-input {
+      width: 100%;
+      min-height: 100px;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+      resize: vertical;
+    }
+    .buttons-container {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .email-input {
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    .send-test-btn{
+      background-color: #283044;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .send-test-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+    
+ <form>
+  <div class="generate-test">
+    <input type="text" id="test-id-input" data-lang="enterTestId" placeholder="Enter Test ID" hidden>
+    <button type="button" id="generate-test-btn" data-lang="startTest">Start Test</button>
+  </div>
+  <div id="final-test-block"></div>
+ </form>
+
+ <script>
+  function getUrlParams() {
+    const params = {};
+    const searchParams = new URLSearchParams(window.location.search);
+    
+    for (const [key, value] of searchParams.entries()) {
+        params[key] = value;
+    }
+    
+    return params;
+}
+
+// Функція для відправки повідомлення про завершення тесту
+function completeTest() {
+    const params = getUrlParams();
+    console.log('URL parameters:', params);
+    
+    // Відправляємо повідомлення батьківському вікну
+    window.parent.postMessage({
+        type: 'testComplete',
+        moduleId: params.moduleId,
+        courseId: params.courseId,
+        testId: params.testId,
+        score: 100 // або інше значення залежно від результатів тесту
+    }, '*');
+    
+    console.log('Повідомлення про завершення тесту відправлено');
+}
+
+// Додаємо обробник для кнопки завершення тесту
+document.addEventListener('DOMContentLoaded', function() {
+    const completeButton = document.getElementById('completeTestButton');
+    
+    if (completeButton) {
+        completeButton.addEventListener('click', completeTest);
+    } else {
+        console.warn('Кнопка завершення тесту не знайдена');
+    }
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const secretKey = 'testSecretIdEncription';
+
+    function getTestIdFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('testId');
+    }
+
+    function decryptTestId(encryptedId) {
+        try {
+            const bytes = CryptoJS.AES.decrypt(encryptedId, secretKey);
+            return bytes.toString(CryptoJS.enc.Utf8);
+        } catch (error) {
+            console.error('Error while decrypting test ID:', error);
+            return null;
+        }
+    }
+
+    let encryptedTestId = getTestIdFromUrl();
+    if (encryptedTestId) {
+        console.log('Encrypted Test ID from URL:', encryptedTestId);
+
+        // Зберігаємо testId у localStorage
+        localStorage.setItem('testId', encryptedTestId);
+
+        // Очищаємо testId з URL
+        const newUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
+    } else {
+        // Якщо testId немає в URL, пробуємо взяти з localStorage
+        encryptedTestId = localStorage.getItem('testId');
+    }
+
+    // Перевіряємо, чи testId не пустий
+    if (!encryptedTestId || encryptedTestId.length < 10) {
+        console.error('Invalid test ID:', encryptedTestId);
+        return;
+    }
+
+    // Автоматично підставляємо testId у <input>
+    document.getElementById('test-id-input').value = encryptedTestId;
+
+    // Обробник для кнопки "Generate Test"
+    document.getElementById('generate-test-btn').addEventListener('click', async function () {
+        let encryptedTestId = document.getElementById('test-id-input').value.trim();
+        const finalTestBlock = document.getElementById('final-test-block');
+        finalTestBlock.innerHTML = ''; // Очищуємо блок перед генерацією
+ 
+        if (!encryptedTestId) {
+            encryptedTestId = localStorage.getItem('testId');
+        }
+        if (!encryptedTestId) {
+            finalTestBlock.innerHTML = '<p>Please provide a test ID.</p>';
+            return;
+        }
+        
+        const decryptedTestId = decryptTestId(encryptedTestId);
+        if (!decryptedTestId) {
+            console.error('Failed to decrypt test ID');
+            return;
+        }
+
+        // Перевіряємо, чи сторінка відкрита в iframe
+        const isInIframe = window.self !== window.top;
+        console.log('Is page in iframe:', isInIframe);
+
+        try {
+            finalTestBlock.innerHTML = '<p data-lang="loadTestData">Loading test data...</p>';
+            // Запит на отримання тесту за ID
+            const response = await fetch(`/tests/get-test/${encodeURIComponent(encryptedTestId)}`);
+
+            if (!response.ok) {
+                throw new Error(`Failed to fetch test: ${response.statusText}`);
+            }
+
+            const testData = await response.json();
+            console.log('Parsed testData:', testData);
+
+            if (testData.error) {
+                throw new Error(testData.error);
+            }
+
+            // Перевіряємо, чи є питання
+            if (testData.questions && testData.questions.length > 0) {
+                // Спочатку очищаємо блок тесту
+                finalTestBlock.innerHTML = '';
+                
+                // Додаємо заголовок тесту
+                const testTitle = document.createElement('h2');
+                testTitle.textContent = testData.title;
+                testTitle.style.textAlign = 'center';
+                testTitle.style.marginBottom = '20px';
+                finalTestBlock.appendChild(testTitle);
+
+                // Відображаємо кожне питання
+                testData.questions.forEach((question, index) => {
+                    const questionWrapper = document.createElement('div');
+                    questionWrapper.classList.add('final-question-block');
+                    questionWrapper.setAttribute('data-question-id', question.id);
+
+                    // Текст питання
+                    const questionText = document.createElement('p');
+                    questionText.textContent = `${index + 1}. ${question.questionText}`;
+                    questionWrapper.appendChild(questionText);
+
+                    // Обробка різних типів питань
+                    if (question.type === 'Single-choice' || question.type === 'Multiple-choice') {
+                        if (question.answers && question.answers.length > 0) {
+                            const answersContainer = document.createElement('div');
+                            answersContainer.className = 'answers-container';
+                            
+                            question.answers.forEach(answer => {
+                                const answerOption = document.createElement('div');
+                                answerOption.classList.add('answer-option');
+
+                                const input = document.createElement('input');
+                                input.type = question.type === 'Single-choice' ? 'radio' : 'checkbox';
+                                input.name = `question_${question.id}`;
+                                input.value = answer.id;
+
+                                const label = document.createElement('label');
+                                label.textContent = answer.answerText;
+
+                                answerOption.appendChild(input);
+                                answerOption.appendChild(document.createTextNode(' ' + answer.answerText));
+                                answersContainer.appendChild(answerOption);
+                            });
+                            
+                            questionWrapper.appendChild(answersContainer);
+                        } else {
+                            questionWrapper.innerHTML += '<p>No answers available for this question.</p>';
+                        }
+                    } else if (question.type === 'Matching' && question.subquestions && question.subquestions.length > 0) {
+                        const matchingContainer = document.createElement('div');
+                        matchingContainer.classList.add('matching-container');
+
+                        const leftColumn = document.createElement('div');
+                        leftColumn.classList.add('matching-left-column');
+                        const rightColumn = document.createElement('div');
+                        rightColumn.classList.add('matching-right-column');
+
+                        // Лівий стовпець (питання)
+                        question.subquestions.forEach((subquestion, subIndex) => {
+                            const leftItem = document.createElement('div');
+                            leftItem.textContent = `${subIndex + 1}. ${subquestion.subquestionText}`;
+                            leftItem.setAttribute('data-subquestion-id', subquestion.id);
+                            leftItem.classList.add('matching-answer-block');
+                            leftColumn.appendChild(leftItem);
+                        });
+
+                        // Правий стовпець (відповіді)
+                        question.subquestions.forEach((subquestion) => {
+                            subquestion.answers.forEach((answer) => {
+                                const rightItem = document.createElement('div');
+                                rightItem.textContent = answer.answerText;
+                                rightItem.classList.add('matching-item');
+                                rightItem.setAttribute('draggable', 'true');
+                                rightItem.setAttribute('data-answer-id', answer.id);
+                                rightColumn.appendChild(rightItem);
+                            });
+                        });
+
+                        matchingContainer.appendChild(leftColumn);
+                        matchingContainer.appendChild(rightColumn);
+                        questionWrapper.appendChild(matchingContainer);
+
+                        // Додаємо drag-and-drop функціонал
+                        addDragAndDropFunctionality(matchingContainer);
+                    } else if (question.type === 'Open-ended') {
+                        // Обробка питань з відкритою відповіддю
+                        const openEndedInput = document.createElement('textarea');
+                        openEndedInput.name = `final-answer-${question.id}`;
+                        openEndedInput.placeholder = 'Type your answer here...';
+                        openEndedInput.classList.add('open-ended-input');
+                        questionWrapper.appendChild(openEndedInput);
+                    } else {
+                        questionWrapper.innerHTML += '<p>Unknown question type or missing data.</p>';
+                    }
+
+                    // Додаємо питання до блоку тесту
+                    finalTestBlock.appendChild(questionWrapper);
+                });
+                
+                const buttonsContainer = document.createElement('div');
+                buttonsContainer.classList.add('buttons-container');
+                
+                // Якщо сторінка в iframe, не показуємо поле для введення email і відразу додаємо кнопку завершення
+                if (isInIframe) {
+                    const completeButton = document.createElement('button');
+                    completeButton.textContent = 'Complete Test';
+                    completeButton.classList.add('send-test-btn');
+                    // Змініть блок відправки повідомлення в кнопці Complete Test
+                    completeButton.addEventListener('click', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const moduleId = urlParams.get('moduleId');
+    const courseId = urlParams.get('courseId');
+    const testType = urlParams.get('testType') || (moduleId ? 'module' : 'course');
+    
+    try {
+        // Отримуємо інформацію про тест
+        const testInfo = testData._testInfo || {};
+        
+        // Визначаємо тип тесту на основі параметрів або moduleId
+        let finalTestType = testInfo.type || testType;
+        if (!finalTestType) {
+            finalTestType = moduleId ? 'module' : 'course';
+        }
+        
+        console.log('Test completion parameters:', {
+            testType: finalTestType,
+            moduleId: parseInt(moduleId || testInfo.moduleId || 0),
+            courseId: parseInt(courseId || testInfo.courseId || 0)
+        });
+        
+        // Відправляємо повідомлення батьківському вікну
+        window.parent.postMessage({
+            type: 'testComplete',
+            testType: finalTestType,
+            moduleId: parseInt(moduleId || testInfo.moduleId || 0),
+            courseId: parseInt(courseId || testInfo.courseId || 0),
+            score: 100 // За замовчуванням 100%
+        }, '*');
+        
+        console.log('Sent test completion message to parent window');
+        alert('Test completed successfully!');
+    } catch (err) {
+        console.error('Error sending completion message:', err);
+        alert('Error completing test. Please try again.');
+    }
+});
+                    
+                    buttonsContainer.appendChild(completeButton);
+                } else {
+                    // Звичайний режим для автономної сторінки
+                    // Поле для введення email
+                    const emailInput = document.createElement('input');
+                    emailInput.type = 'email';
+                    emailInput.id = 'teacher-email-input';
+                    emailInput.placeholder = "Enter teacher's email";
+                    emailInput.classList.add('email-input');
+                    buttonsContainer.appendChild(emailInput);
+                    
+                    // Кнопка "Надіслати цей тест"
+                    const sendTestButton = document.createElement('button');
+                    sendTestButton.textContent = 'Send test';
+                    sendTestButton.classList.add('send-test-btn');
+                    sendTestButton.setAttribute('data-lang', "sendBtn");
+                    sendTestButton.addEventListener('click', async () => {
+                        // Код для відправки результатів на email
+                        // ...
+                    });
+                    
+                    buttonsContainer.appendChild(sendTestButton);
+                }
+                
+                finalTestBlock.appendChild(buttonsContainer);
+            } else {
+                finalTestBlock.innerHTML = '<p>No questions found for this test.</p>';
+            }
+        } catch (error) {
+            finalTestBlock.innerHTML = `<p>Error: ${error.message}</p>`;
+        }
+    });
+
+    // Функція для додавання drag-and-drop функціональності
+    function addDragAndDropFunctionality(container) {
+        const draggableItems = container.querySelectorAll('.matching-item');
+        const answerSlots = container.querySelectorAll('.matching-answer-block');
+       
+        // Зберігаємо оригінальний текст підпитань у data-атрибут
+        answerSlots.forEach(slot => {
+            if (!slot.hasAttribute('data-original-text')) {
+                slot.setAttribute('data-original-text', slot.textContent.trim());
+            }
+        });
+
+        draggableItems.forEach(item => {
+            item.addEventListener('dragstart', (e) => {
+                console.log('Drag started:', item.textContent); 
+                if (item.hasAttribute('data-answer-id')) {
+                    const answerId = item.getAttribute('data-answer-id');
+                    e.dataTransfer.setData('text/plain', answerId);
+                    console.log('Data set:', answerId); 
+                }
+            });
+        });
+
+        // Події для зон скидання
+        answerSlots.forEach(slot => {
+            slot.addEventListener('dragover', (e) => {
+                console.log('Drag over slot'); // Лог для перевірки
+                e.preventDefault(); // Дозволяє скидання
+                slot.classList.add('dragover');
+            });
+
+            slot.addEventListener('dragleave', () => {
+                console.log('Drag leave slot'); // Лог для перевірки
+                slot.classList.remove('dragover');
+            });
+
+            slot.addEventListener('drop', (e) => {
+                console.log('Drop event'); // Лог для перевірки
+                e.preventDefault();
+                slot.classList.remove('dragover');
+                const answerId = e.dataTransfer.getData('text/plain');
+                console.log('Received data-answer-id in drop:', answerId); // Лог
+                const draggedItem = container.querySelector(`[data-answer-id="${answerId}"]`);
+                
+                if (draggedItem) {
+                    console.log('Dragged item found:', draggedItem.textContent); // Лог
+                    
+                    // Очищаємо слот перед додаванням нового контенту
+                    while (slot.firstChild) {
+                        slot.removeChild(slot.firstChild);
+                    }
+                    
+                    // Додаємо контейнер, щоб залишити текст підпитання та нову відповідь
+                    const wrapper = document.createElement('div');
+                    wrapper.classList.add('matching-slot-wrapper');
+                    
+                    // Додаємо текст підпитання
+                    const questionText = document.createElement('span');
+                    questionText.classList.add('original-question');
+                    questionText.textContent = slot.getAttribute('data-original-text'); // Беремо збережений текст
+
+                    // Додаємо відповідь
+                    const answerElement = draggedItem.cloneNode(true);
+                    answerElement.classList.add('dropped-answer');
+                    
+                    wrapper.appendChild(questionText);
+                    wrapper.appendChild(answerElement);
+                    slot.appendChild(wrapper);
+                } else {
+                    console.error('Dragged item not found for answerId:', answerId); // Лог
+                }
+            });
+        });
+    }
+
+    // Автоматично запускаємо генерацію тесту, якщо є testId
+    if (encryptedTestId) {
+        document.getElementById('generate-test-btn').click();
+    }
+});
+ </script>
+ <script src="../tests/test-lang.js"></script>
+</body>
+</html>

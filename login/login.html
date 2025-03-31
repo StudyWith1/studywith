@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Log In</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../login/login.css" />
+    <link rel="icon" href="../images/menu-logo.ico" />
+    <link rel="stylesheet" href="/preloader/preloader.css">
+  </head>
+  <body>
+    <script src="../header/auth-header.js"></script>
+
+    <div class="main-container">
+      <div class="illustration">
+        <img src="/images/rb_2148572901.png" alt="Illustration" />
+      </div>
+
+      <div class="login-container">
+        <h2 data-lang="LogIn">Log In</h2>
+
+        <div class="login-form">
+          <input
+            class="email-input"
+            type="email"
+            id="email"
+            placeholder="Email"
+            required
+            data-lang="emailPlaceholder"
+          />
+          <div class="password-things">
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+              data-lang="passwordPlaceholder"
+              class="password-input"
+              oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯїЇєЄіІґҐ0-9]/g, '')"
+            />
+            <button
+              type="button"
+              id="toggle-password"
+              class="button-view"
+              onclick="togglePasswordVisibility()"
+            >
+              👁️
+            </button>
+          </div>
+          <div id="error-message" style="color: red; margin-bottom: 10px"></div>
+          <button
+            type="button"
+            onclick="handleLogin()"
+            class="button-login"
+          >
+          <span class="circle1"></span>
+          <span class="circle2"></span>
+          <span class="circle3"></span>
+          <span class="circle4"></span>
+          <span class="circle5"></span>
+          <span data-lang="signInButton">Sign in</span>
+          </button>
+          <a href="/forgot-password" data-lang="forgotPasswordLink"
+            >Forgot password?</a
+          >
+        </div>
+
+        <a href="/auth/google">
+          <img src="../images/web_light_rd_ctn@2x.png" alt="google-sign-in" />
+        </a>
+      </div>
+    </div>
+    <script src="/mobileview.js"></script>
+    <script src="../login/login.js"></script>
+    <script src="../login/login-lang.js"></script>
+    <script src="/footer/footer.js"></script>
+    <script src="/preloader/preloader.js"></script>
+  </body>
+</html>

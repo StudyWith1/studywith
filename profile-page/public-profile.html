@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyWith| Profile</title>
+    <link rel="stylesheet" href="../profile-page/public-profile.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="../images/menu-logo.ico">
+
+</head>
+
+<body>
+    <div class="page-container">
+        <main class="profile">
+            <div class="left-p">
+                <aside>
+                    <div class="info">
+                        <img class="profile-image" id="profile-image" src="/images/user-avatar.png" alt="user image"
+                            width="150px" height="150px">
+                        <p class="user-n" id="user-nickname"></p>
+                        <p class="user-n" id="real-name"></p>
+                    </div> 
+
+                    <div class="hobbies">
+                        <h2 data-lang="hobbies"><img src="/images/hobbies.png" alt="hobbies-ico" width="27px " height="27px">Hobbies</h2>
+                        <ul class="hobbies-d" id="hobbies-list">
+                            <!-- Hobbies will be dynamically added here -->
+                        </ul>
+                    </div>
+
+                    <div class="languages">
+                        <h2 data-lang="languages"><img src="/images/lang.png" alt="language-ico" width="27px " height="27px">Languages</h2>
+                        <ul id="languages-list">
+                            <!-- Languages will be dynamically added here -->
+                        </ul>
+                    </div> 
+                </aside>
+            </div> 
+
+            <div class="right-p">
+                <h2 data-lang="aboutMe"><img src="/images/about-me.png" alt="about-me-ico" width="27px " height="27px">About me</h2>
+                <p class="about-me truncate" id="about-me">An experienced teacher with over 7 years of experience in
+                    programming...</p>
+                <div class="container">
+                    <span class="show-more" id="show-more">Show more...</span>
+                </div>
+
+                <h2 data-lang="education"><img src="/images/education.png" alt="education-ico" width="27px " height="27px">Education</h2>
+                <ul id="education-list">
+                    <!-- Education will be dynamically added here -->
+                </ul>
+
+                <h2 data-lang="experience"><img src="/images/experience.png" alt="experience-ico" width="27px " height="27px">Experience</h2>
+                <ul id="experience-list">
+                    <!-- Experience will be dynamically added here -->
+                </ul>
+
+                <h2 data-lang="myCourses"><img src="/images/my-courses.png" alt="my-courses-ico" width="27px " height="27px">My courses</h2>
+                <div class="courses-list" id="courses-list">
+                    <!-- Courses will be dynamically added here -->
+                </div>
+                <div class="btn-container">
+                    <button class="btn-view-all-1" data-lang="viewAll">View all</button>
+                </div>
+
+                <h2 data-lang="review"><img src="/images/Comment.png" alt="Comment" width="27px " height="27px">Student reviews</h2>
+                <div class="reviews-list" id="reviews-list">
+                    <!-- Reviews will be dynamically added here -->
+                </div>
+                <div class="btn-container">
+                    <button class="btn-view-all-2" data-lang="viewAll">View all</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Ensure translations are available before running
+            if (typeof translations === 'undefined') {
+                console.error('Translations object not loaded');
+                return;
+            }
+        });
+
+       
+    </script>
+    <script src="../header/auth-header.js"></script>
+    <script src="../footer/footer.js"></script>
+    <script src="../profile-page/public-lang.js"></script>
+    <script src="../profile-page/public-p.js"></script>
+</body>
+</html>

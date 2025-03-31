@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyWith</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+    <link rel="stylesheet" href="/header/course-header.css">
+
+</head>
+<body>
+    <header> 
+        <div class="container">
+            <div class="left-s"> 
+                <h2 class="home" data-lang="home">Home</h2>
+                <h2 class="course-n" data-lang="courseName"><img src="../images/save-c.svg" alt="save-course-ico">Course name course name</h2>
+            </div>
+
+            <div class="right-s">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <span style="width: 50%;"></span>
+                    </div>
+                    <div class="progress-text">
+                        <span data-lang="progress">Progress</span>
+                        <span class="percent">50%</span>
+                    </div>
+                </div>
+
+                <div class="lang-switcher">
+                    <a class="lang-btn" data-lang="en">EN</a> |
+                    <a class="lang-btn" data-lang="ua">UA</a>
+                </div>
+                <button class="btn" id="profile-btn">
+                    <img src="../images/user-avatar.png" alt="user image" />
+                </button>
+                <div>
+                    <button>
+                        <img class="oth" src="../images/more.png" alt="other-options-ico">
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" data-lang="shareCourse">
+                            <img src="../images/share-c.svg" alt="share-ico">
+                            Share this course</a>
+                        <a href="#" data-lang="unenrollCourse">
+                            <img src="../images/unenroll.svg" alt="Unenroll">
+                            Unenroll from this course</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <script src="../header/course-header.js"></script>
+    
+</body>
+</html>

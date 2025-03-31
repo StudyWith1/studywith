@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang="pageTitle">StudyWith</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/menu-logo.ico">
+    <link rel="stylesheet" href="/preloader/preloader.css">
+    <style>
+
+        
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            min-height: 720px;
+        }
+
+        body {
+            background: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            height: 540px;
+        }
+
+        .main-content .container {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            padding: 0 20px;
+            height: 100%;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .hero-image img {
+            width: 130%;
+            height: auto;
+        }
+
+        .content-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+        }
+
+        .welcome-text {
+            font-family: "Inter", Regular;
+            font-weight: 500;
+            font-size: 36px;
+            line-height: 46px;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .btn1 {
+            position: relative;
+            width: 300px;
+            height: 90px;
+            background: #fff;
+            border-radius: 12px;
+            text-decoration: none;
+            border: 1px solid #283044;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .btn1:hover {
+            color: #000000;
+            transform: translate(-0.25rem, -0.25rem);
+            background: #DCECFC;
+            box-shadow: 0.25rem 0.25rem #283044;
+        }
+
+        .btn1-text {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 19px;
+            color: #000000;
+            text-align: center;
+        }
+
+        .btn1:hover .btn1-text {
+            color: #283044;
+        }
+
+        .highlight-word {
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 6px;
+        }
+
+        .btn2 {
+            position: relative;
+            width: 300px;
+            height: 90px;
+            background: #283044;
+            border-radius: 12px;
+            text-decoration: none;
+            border: 1px solid #283044;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .btn2:hover {
+            color: #000000;
+            transform: translate(-0.25rem, -0.25rem);
+            background: #DCECFC;
+            box-shadow: 0.25rem 0.25rem #283044;
+        }
+
+        .btn2-text {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 19px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .btn2:hover .btn2-text {
+            color: #283044;
+        }
+
+        .btn1:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+
+.btn2:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+    </style>
+</head>
+<body>
+    <main class="main-content">
+        <div class="container">
+            <div class="hero-image">
+                <img src="/images/10088.jpg" alt="Hero Image">
+            </div>
+            <div class="content-right">
+                <div class="welcome-text" data-lang="welcomeText">
+                    Welcome to StudyWith!<br>
+                    Learn, connect, succeed together!
+                </div>
+                <div class="buttons">
+                    <a href="/reg-student" class="btn1">
+                        <div class="btn1-text" data-lang="createAcc">
+                            Create an account as a
+                            <span class="highlight-word" data-lang="student">Student</span>
+                        </div>
+                    </a>
+                    <a href="/reg-teacher" class="btn2">
+                        <div class="btn2-text" data-lang="createAcc">
+                            Create an account as a
+                            <span class="highlight-word"data-lang="teacher">Teacher</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../footer/footer.js"></script>
+    <script src="../header/auth-header.js"></script>
+    <script src="../registration_pages/main-lang.js"></script>
+    <script src="/mobileview.js"></script>
+    <script src="/preloader/preloader.js"></script>
+</body>
+</html>
