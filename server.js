@@ -16,7 +16,7 @@ const testRouter = require('./test')
 const commentRouter = require('./courseViewRouter')
 
 app.use(cors({
-    origin: 'http://localhost:8000',
+    origin: 'http://0.0.0.0:10000',
     credentials: true
 }));
 app.use(express.json());
@@ -168,8 +168,8 @@ app.get('/course/:courseId/comments', (req, res) => {
     res.sendFile(path.join(__dirname, 'course-view/course-view.html'));
 });
 
-const HOST = process.env.HOST || "localhost";
-const PORT = process.env.PORT || 8000;
+const HOST = process.env.HOST || "0.0.0.0";
+const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, HOST, () => {
     console.log(`Server running on http://${HOST}:${PORT}`);
